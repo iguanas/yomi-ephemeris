@@ -4,9 +4,13 @@
 build/
 .dart_tool
 
-# Generated code (regenerate with: dart run build_runner build --delete-conflicting-outputs)
+# Generated code. Vendored under lib/ so the package is consumable as a git
+# dependency — consumers can't run build_runner on a pub-cache dependency.
+# Anything generated outside lib/ (tests) stays ignored; CI regenerates it.
 *.g.dart
 *.freezed.dart
+!lib/**/*.g.dart
+!lib/**/*.freezed.dart
 
 # Compiled server binary
 bin/server
