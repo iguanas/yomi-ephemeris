@@ -1,0 +1,18 @@
+# Dart / build
+.dart_tool/
+.packages
+build/
+.dart_tool
+
+# Generated code (regenerate with: dart run build_runner build --delete-conflicting-outputs)
+*.g.dart
+*.freezed.dart
+
+# Compiled server binary
+bin/server
+yomi-ephemeris-server
+
+# Editor
+.idea/
+*.iml
+.vscode/

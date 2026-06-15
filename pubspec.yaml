@@ -1,0 +1,31 @@
+name: yomi_ephemeris
+description: >-
+  The Yomi Ephemeris — deterministic astronomy engine. Embedded NASA JPL
+  Horizons planet tables + analytic Sun/Moon/North Node + Placidus houses +
+  aspect/transit detection. Pure Dart; the app and the standalone service
+  both run this exact code.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ^3.11.3
+
+dependencies:
+  freezed_annotation: ^3.1.0
+  # ^4.11.0 (not ^4.12.0): the app's json_serializable 6.13.x requires
+  # json_annotation <4.12.0 under the flutter_test meta pin — a tighter bound
+  # here makes the app's version solve fail.
+  json_annotation: ^4.11.0
+  uuid: ^4.5.3
+
+dev_dependencies:
+  build_runner: ^2.13.1
+  freezed: ^3.2.5
+  json_serializable: ^6.13.0
+  lints: ^6.0.0
+  # Server (bin/server.dart) only. Dev deps so they stay out of the Flutter
+  # app's resolution graph — root-package resolution (dart run / dart
+  # compile / Docker) still includes them.
+  shelf: ^1.4.2
+  shelf_router: ^1.1.4
+  test: ^1.25.0

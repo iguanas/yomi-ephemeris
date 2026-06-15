@@ -1,0 +1,8 @@
+# Keep the build context lean and the COPY layer cache stable.
+.dart_tool/
+build/
+test/
+tool/
+*.md
+Dockerfile
+.dockerignore
