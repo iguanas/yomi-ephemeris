@@ -1,0 +1,28 @@
+name: parity-gate
+
+# The JPL parity gate. Nothing that changes computed positions ships without
+# this green. This repo is the canonical home of the engine; the app consumes
+# tagged releases that have already passed here.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+      - run: dart pub get
+      # Generated freezed/json is gitignored — regenerate before analyze/test.
+      - run: dart run build_runner build --delete-conflicting-outputs
+      - run: dart analyze --fatal-infos
+      - run: dart test
